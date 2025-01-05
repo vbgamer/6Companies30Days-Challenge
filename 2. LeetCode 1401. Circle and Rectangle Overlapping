@@ -1,0 +1,16 @@
+class Solution:
+    def checkOverlap(self, radius: int, xCenter: int, yCenter: int, x1: int, y1: int, x2: int, y2: int) -> bool:
+        def distance_to_edge(min_edge: int, max_edge: int, center: int) -> int:
+           
+            if min_edge <= center <= max_edge:
+                return 0  
+            if center < min_edge:
+                return min_edge - center  
+            return center - max_edge  
+        
+      
+        distance_x = distance_to_edge(x1, x2, xCenter)
+        distance_y = distance_to_edge(y1, y2, yCenter)
+        
+       
+        return distance_x * distance_x + distance_y * distance_y <= radius * radius
