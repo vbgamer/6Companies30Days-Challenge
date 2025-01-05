@@ -1,0 +1,9 @@
+class Solution:
+    def findTheWinner(self, n: int, k: int) -> int:
+
+        def friend(n: int, k: int) -> int:
+                if n == 1:
+                 return 0
+                return (friend(n-1,k)+k) % n
+
+        return friend(n,k) +1
