@@ -1,0 +1,21 @@
+class Solution:
+
+    def __init__(self, rects: List[List[int]]):
+        self.rects = rects
+        self.cumulative_areas = []
+        cumulative_area = 0
+        for x1, y1, x2, y2 in rects:
+            area = (x2 - x1 + 1) * (y2 - y1 + 1)
+            cumulative_area += area
+            self.cumulative_areas.append(cumulative_area)
+
+    def pick(self) -> List[int]:
+        target = random.randint(1, self.cumulative_areas[-1])
+        rect_index = bisect_left(self.cumulative_areas, target)
+
+        x1, y1, x2, y2 = self.rects[rect_index]
+
+        random_x = random.randint(x1, x2)
+        random_y = random.randint(y1, y2)
+
+        return [random_x, random_y]
