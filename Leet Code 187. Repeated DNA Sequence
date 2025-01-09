@@ -1,0 +1,13 @@
+class Solution:
+    def findRepeatedDnaSequences(self, s):
+        seen = set()
+        duplicates = set()
+        
+        for i in range(len(s) - 9):  
+            substring = s[i:i + 10]
+            if substring in seen:
+                duplicates.add(substring)
+            else:
+                seen.add(substring)
+        
+        return list(duplicates)  
